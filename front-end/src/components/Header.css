@@ -1,0 +1,17 @@
+header {
+    background: #fff;
+    padding: 8px 5vw;
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+    box-shadow: rgba(0, 0, 0, 0.15) 0 0 10px 0;
+}
+header > div { display: flex; }
+
+#logo {
+    color: #263238;
+    text-decoration: none;
+    font-size: 28px;
+    line-height: 30px;
+}

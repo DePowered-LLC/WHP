@@ -1,0 +1,27 @@
+.bc {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+.bc > .part {
+    display: flex;
+    flex: 1 1 0;
+    justify-content: center;
+    position: relative;
+    color: #636363;
+    text-decoration: none;
+    padding: 8px 15px;
+}
+
+.bc > .part:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    right: -2px;
+    margin: auto;
+    width: 2px;
+    background-color: #0000001f;
+    transform: skewX(-30deg);
+}
