@@ -8,6 +8,7 @@
 * [Mongoose](https://github.com/Automattic/mongoose)
 * [Axios](https://github.com/axios/axios)
 * [MongoDB](https://github.com/mongodb/mongo)
+* [dc-api-core](https://github.com/DimaCrafter/dc-api-core)
 
 ---
 
@@ -15,7 +16,7 @@
 
 ```txt
 📙
- ├── 📦 back-end            Серверная часть
+ ├── 📦 back-end            Серверная часть (dc-api-core)
  │   ├── ⚙️ controllers     Контроллеры запросов
  │   └── 🗃️ models          Модели для работы с БД
  ├── 🛢️ db                   Хранилище БД

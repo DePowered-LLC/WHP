@@ -3,14 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "babel-node index.js"
+    "start": "node node_modules/dc-api-core"
   },
-  "devDependencies": {
-    "babel-preset-env": "^1.7.0"
-  },
-  "preinstall": "npm i -g babel-cli",
   "dependencies": {
-    "express": "^4.16.3",
-    "mongoose": "^5.2.7"
+    "dc-api-core": "^0.1.0"
   }
 }
