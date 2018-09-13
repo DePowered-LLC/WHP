@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './Header';
 import E404 from './pages/E404';
 import Main from './pages/Main';
-import AddBill from "./pages/AddBill";
+import Register from "./pages/Auth/Register";
 import './App.css';
 import API from '../API';
 window.API = API;
@@ -16,7 +16,7 @@ class App extends Component {
 					<Header />
 					<Switch>
 						<Route exact path="/" component={Main} />
-						<Route exact path="/add/bill" component={AddBill} />
+						<Route exact path="/auth/register" component={Register} />
 						<Route component={E404} />
 					</Switch>
 				</div>

@@ -9,6 +9,11 @@ body {
 
 .page-container { margin: 2.5vh 5vw; }
 
+form {
+    width: 380px;
+    margin: auto;
+}
+
 .btn {
     display: inline-flex;
     margin: 0 5px;
@@ -20,6 +25,8 @@ body {
     border-radius: 20px;
     transition: 0.3s;
 }
+
+button[type="submit"] { width: calc(100% - 8px); }
 
 .btn:hover {
     background-color: #80CBC4;

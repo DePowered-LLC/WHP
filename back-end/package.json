@@ -6,6 +6,7 @@
     "start": "node node_modules/dc-api-core"
   },
   "dependencies": {
-    "dc-api-core": "^0.1.0"
+    "bcrypt": "^3.0.0",
+    "dc-api-core": "^0.1.2"
   }
 }

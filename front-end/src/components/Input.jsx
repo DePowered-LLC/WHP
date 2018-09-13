@@ -10,6 +10,7 @@ class Input extends Component {
     
     handleChange(event) {
         let val = event.target.value.trim();
+        this.props.onChange && this.props.onChange(event);
         if(val) { this.setState({active: true, val}); }
         else { this.setState({active: false, val}); }
     }
@@ -17,7 +18,7 @@ class Input extends Component {
     render() {
         return (
             <div className={'input_wrapper' + (this.state.active?' active':'')}>
-                <input value={this.state.val} onChange={this.handleChange} type={this.props.type || 'text'} required />
+                <input value={this.state.val} onChange={this.handleChange} name={this.props.name} type={this.props.type || 'text'} required />
                 <span className="placeholder">{this.props.placeholder}</span>
             </div>
         );

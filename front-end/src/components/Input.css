@@ -1,9 +1,8 @@
 .input_wrapper {
     display: flex;
     text-align: left;
-    width: 30%;
     position: relative;
-    margin: 8px 0;
+    margin: 8px 4px;
 }
 
 .input_wrapper > input {

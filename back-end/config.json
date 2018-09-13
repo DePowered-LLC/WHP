@@ -1,6 +1,7 @@
 {
     "db": {
         "host": "localhost",
-        "db": "whp"
-    }
+        "name": "whp"
+    },
+    "devMode": true
 }
