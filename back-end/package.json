@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.0",
-    "dc-api-core": "^0.1.2"
+    "dc-api-core": "^0.1.3-1"
   }
 }

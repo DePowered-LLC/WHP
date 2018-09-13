@@ -6,11 +6,16 @@ class Input extends Component {
         super(props);
         this.state = {val: '', active: false};
         this.handleChange = this.handleChange.bind(this);
+        this.set = this.set.bind(this);
     }
     
     handleChange(event) {
         let val = event.target.value.trim();
         this.props.onChange && this.props.onChange(event);
+        this.set(val);
+    }
+
+    set(val) {
         if(val) { this.setState({active: true, val}); }
         else { this.setState({active: false, val}); }
     }

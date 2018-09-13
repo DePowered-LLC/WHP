@@ -83,13 +83,15 @@ class Register extends Component {
                         type: 'success',
                         text: 'Аккаунт был успешно зарегистрирован'
                     };
+                    sessionStorage.setItem('register', data.email);
+                    setTimeout(() => this.props.history.push('/auth/login'), 1000);
                     break;
                 default: console.error(result); result = this.defaultStatus; break;
             }
 
             this.setState({
                 status: result,
-                working: true
+                working: false
             });
         }
     }
@@ -104,7 +106,7 @@ class Register extends Component {
                     <Input onChange={this.formChange} name="email" type="email" placeholder="Введите email" />
                     <Input onChange={this.formChange} name="pass" type="password" placeholder="Введите пароль" />
                     <Input onChange={this.formChange} name="passr" type="password" placeholder="Повторите пароль" />                    
-                    <button working={this.state.working.toString()} type="submit" className="button-success button-lg">Зарегистрироваться</button>
+                    <button disabled={this.state.working} type="submit" className="button-success button-lg">Зарегистрироваться</button>
                 </form>
             </div>
         );

@@ -3,5 +3,8 @@
         "host": "localhost",
         "name": "whp"
     },
+    "session": {
+        "secret": "whp"
+    },
     "devMode": true
 }

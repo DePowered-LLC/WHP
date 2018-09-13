@@ -76,4 +76,24 @@
     height: 3px;
 }
 
+.sign-info { background-color: #00bcd4; }
+.sign-info > .helper:before, .sign-info > .helper:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 20px;
+    margin: auto;
+    width: 3px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+.sign-info > .helper:after {
+    top: 8px;
+    bottom: 0;
+    width: 3px;
+    height: 17px;
+    border-radius: 0;
+}
+
 .sign-hidden { display: none; }

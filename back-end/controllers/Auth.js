@@ -1,4 +1,29 @@
+const bcrypt = require('bcrypt');
+async function cryptPass(val) {
+    const salt = await bcrypt.genSalt(11);
+    return await bcrypt.hash(val, salt);
+}
+
 class Auth {
+    login() {
+        this.db.User.findOne({email: this.data.email}, async (err, user) => {
+            if(err) this.send(err, 500);
+            else if (!user) this.send('no_account');
+            else if(!await bcrypt.compare(this.data.pass, user.pass)) this.send('wrong_password');
+            else {
+                this.session.user = {
+                    email: user.email,
+                    balance: user.balance
+                };
+
+                this.session.save(err => {
+                    if(err) this.send(err, 500);
+                    else this.send('success');
+                });
+            }
+        });
+    }
+
     register() {
         if(this.data.pass != this.data.passr) {
             this.send('passwords_doesnt_match');
@@ -7,15 +32,25 @@ class Auth {
         } else {
             this.data.pass = this.data.pass.trim();
             this.data.email = this.data.email.trim();
-            this.db.User.findOne({email: this.data.email}, (err, res) => {
+            this.db.User.findOne({email: this.data.email}, async (err, user) => {
                 if(err) this.send(err, 500);
-                else if(res) this.send('email_taken');
-                else this.db.User.create(this.data, err => {
-                    if(err) this.send(err, 500);
-                    else this.send('success');
-                });
+                else if(user) this.send('email_taken');
+                else {
+                    user = {};
+                    user.email = this.data.email;
+                    user.pass = await cryptPass(this.data.pass);
+                    this.db.User.create(user, err => {
+                        if(err) this.send(err, 500);
+                        else this.send('success');
+                    });
+                }
             });
         }
+    }
+
+    session() {
+        if(this.data) this.session[this.data] = this.session[this.data]?!this.session[this.data]:true;
+        this.send(this.session);
     }
 }
 

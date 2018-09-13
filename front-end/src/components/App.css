@@ -26,6 +26,15 @@ form {
     transition: 0.3s;
 }
 
+button[disabled] {
+    filter: grayscale(1);
+    cursor: not-allowed;
+}
+
+button {
+    outline: none;
+}
+
 button[type="submit"] { width: calc(100% - 8px); }
 
 .btn:hover {
