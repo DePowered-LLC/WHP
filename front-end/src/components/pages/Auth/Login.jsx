@@ -77,7 +77,7 @@ class Login extends Component {
                 <BC path={['Авторизация', 'Вход']} />
                 <form className="center" onSubmit={this.formSend}>
                     <Sign type={this.state.status.type} title="Вход" desk={this.state.status.text} />
-                    <h2 className="pheader">Войдите в свой аккаунт {conf.title}</h2>
+                    <h2>Войдите в свой аккаунт {conf.title}</h2>
                     <Input ref={inComp => {
                         if(sessionStorage.getItem('register')) {
                             const email = sessionStorage.getItem('register');
@@ -93,7 +93,7 @@ class Login extends Component {
                         }
                     }} onChange={this.formChange} name="email" type="email" placeholder="Введите email" />
                     <Input onChange={this.formChange} name="pass" type="password" placeholder="Введите пароль" />
-                    <button disabled={this.state.working} type="submit" className="button-success button-lg">Войти</button>
+                    <button disabled={this.state.working} type="submit" className="btn btn-success">Войти</button>
                 </form>
             </div>
         );

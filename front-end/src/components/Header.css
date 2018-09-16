@@ -15,3 +15,25 @@ header > div { display: flex; }
     font-size: 28px;
     line-height: 30px;
 }
+
+.btn-header {
+    display: inline-flex;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #546E7A;
+    background-color: rgba(0, 0, 0, 0.01);
+    padding: 4px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.btn-header:hover {
+    background-color: #80CBC4;
+    color: #fff;
+}
+
+.btn-header.active {
+    background-color: #26A69A;
+    color: #fff;
+}

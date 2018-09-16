@@ -102,11 +102,11 @@ class Register extends Component {
                 <BC path={['Авторизация', 'Регистрация']} />
                 <form className="center" onSubmit={this.formSend}>
                     <Sign type={this.state.status.type} title="Регистрация" desk={this.state.status.text} />
-                    <h2 className="pheader">Регистрация аккаунта {conf.title}</h2>
+                    <h2>Регистрация аккаунта {conf.title}</h2>
                     <Input onChange={this.formChange} name="email" type="email" placeholder="Введите email" />
                     <Input onChange={this.formChange} name="pass" type="password" placeholder="Введите пароль" />
                     <Input onChange={this.formChange} name="passr" type="password" placeholder="Повторите пароль" />                    
-                    <button disabled={this.state.working} type="submit" className="button-success button-lg">Зарегистрироваться</button>
+                    <button disabled={this.state.working} type="submit" className="btn btn-success">Зарегистрироваться</button>
                 </form>
             </div>
         );
