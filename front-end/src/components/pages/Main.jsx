@@ -6,6 +6,7 @@ class Main extends Component {
         return (
             <div className="page-container">
                 <BC path={['Главная']} />
+                {JSON.stringify(this.props.User)}
             </div>
         );
     }

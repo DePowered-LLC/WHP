@@ -19,11 +19,15 @@ class Input extends Component {
         if(val) { this.setState({active: true, val}); }
         else { this.setState({active: false, val}); }
     }
+
+    focus() {
+        this.refs.input.focus();
+    }
     
     render() {
         return (
             <div className={'input_wrapper' + (this.state.active?' active':'')}>
-                <input value={this.state.val} onChange={this.handleChange} name={this.props.name} type={this.props.type || 'text'} required />
+                <input ref="input" value={this.state.val} onChange={this.handleChange} name={this.props.name} type={this.props.type || 'text'} required />
                 <span className="placeholder">{this.props.placeholder}</span>
             </div>
         );

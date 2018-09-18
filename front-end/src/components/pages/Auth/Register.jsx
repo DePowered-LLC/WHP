@@ -104,6 +104,10 @@ class Register extends Component {
                     <Sign type={this.state.status.type} title="Регистрация" desk={this.state.status.text} />
                     <h2>Регистрация аккаунта {conf.title}</h2>
                     <Input onChange={this.formChange} name="email" type="email" placeholder="Введите email" />
+                    <div style={{display: 'flex'}}>
+                        <Input onChange={this.formChange} name="first_name" type="text" placeholder="Введите имя" />
+                        <Input onChange={this.formChange} name="last_name" type="text" placeholder="Введите фамилию" />
+                    </div>
                     <Input onChange={this.formChange} name="pass" type="password" placeholder="Введите пароль" />
                     <Input onChange={this.formChange} name="passr" type="password" placeholder="Повторите пароль" />                    
                     <button disabled={this.state.working} type="submit" className="btn btn-success">Зарегистрироваться</button>

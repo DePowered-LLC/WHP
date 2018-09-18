@@ -17,18 +17,22 @@ header > div { display: flex; }
 }
 
 .btn-header {
+    position: relative;
     display: inline-flex;
     margin: 0 5px;
+    font-size: 16px;
     text-decoration: none;
     color: #546E7A;
     background-color: rgba(0, 0, 0, 0.01);
     padding: 4px 15px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 20px;
+    outline: none;
+    cursor: pointer;
     transition: 0.3s;
 }
 
-.btn-header:hover {
+.btn-header:hover, .btn-header:focus {
     background-color: #80CBC4;
     color: #fff;
 }
@@ -36,4 +40,33 @@ header > div { display: flex; }
 .btn-header.active {
     background-color: #26A69A;
     color: #fff;
+}
+
+.btn-header:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 0;
+    margin: auto;
+    bottom: -5px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #fff;
+    filter: drop-shadow(rgba(0, 0, 0, 0.35) 0 0 2px);
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s;
+}
+.btn-header:focus:before { opacity: 1; bottom: -2px; }
+
+.pace-inactive { opacity: 0; }
+.pace .pace-progress {
+    position: absolute;
+    background: #26a69a;
+    top: 46px;
+    left: 0;
+    height: 1px;
+    z-index: 2000;
+    box-shadow: rgba(38, 166, 154, 0.2) -5px 1px 0 0;
 }

@@ -17,27 +17,53 @@ class App extends Component {
 		this.state = {
 			loading: true
 		};
-		(async () => {
-			Object.assign(User, await API.auth.session());
-			this.setState({loading: false});
-		})();
+		this.checkSession = this.checkSession.bind(this);
+		this.logout = this.logout.bind(this);
 	}
 
+	componentDidMount() {
+		Route.App = this;
+		this.checkSession();
+	}
+
+	async checkSession() {
+		this.setState({loading: true});
+		const result = await API.auth.session();
+		if(result.msg) {
+			User.isLogged = true;
+			User.session = result.msg;
+		}
+		this.setState({loading: false});
+	}
+	
+	async logout() {
+		this.setState({loading: true});
+        const result = await API.auth.logout();
+        if(result.msg === 'success') {
+            User.isLogged = false;
+            User.session = {};
+        } else {
+            alert('Произошла непредвиденная ошибка');
+        }
+		this.setState({loading: false});
+    }
+
 	render() {
-		return this.state.loading
-			? <div id="loader"></div>
-			: <BrowserRouter>
+		return (
+			<BrowserRouter>
 				<div>
-					<Header />
+					<Header App={this} User={User} />
+					<div id="loader" className={this.state.loading ? '' : 'hidden'}></div>
 					<AnimatedSwitch {...switchAnim}>
-						<Route onEnter={() => console.log('Works fine')} exact path="/" component={Main} />
+						<Route exact path="/" component={Main} />
 						<Route exact auth path="/private" component={Main} />
 						<Route exact path="/auth/register" component={Register} />
 						<Route exact path="/auth/login" component={Login} />
 						<Route component={E404} />
 					</AnimatedSwitch>
 				</div>
-			</BrowserRouter>;
+			</BrowserRouter>
+		);
 	}
 }
 
@@ -55,8 +81,8 @@ const User = {
 
 class Route extends ORoute {
 	render() {
-		const chProps = {...this.context.router, ...this.state, User};
 		const Component = this.props.component;
+		const chProps = {...this.context.router, ...this.state, User, App: Route.App};
 		return this.props.auth
 			? User.isLogged ? <Component {...chProps} /> : <E403 {...chProps} />
 			: <Component {...chProps} />

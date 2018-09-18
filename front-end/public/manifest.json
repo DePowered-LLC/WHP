@@ -1,15 +1,15 @@
 {
     "short_name": "WHP",
-    "name": "WHP",
+    "name": "Web Hosting Panel",
     "icons": [
         {
             "src": "favicon.ico",
-            "sizes": "64x64 32x32 24x24 16x16",
+            "sizes": "256x256 128x128 64x64 32x32 24x24 16x16",
             "type": "image/x-icon"
         }
     ],
     "start_url": "./index.html",
     "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
+    "theme_color": "#ffffff",
+    "background_color": "#f4f4f4"
 }

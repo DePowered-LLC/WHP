@@ -38,6 +38,8 @@ class Auth {
                 else {
                     user = {};
                     user.email = this.data.email;
+                    user.first_name = this.data.first_name;
+                    user.last_name = this.data.last_name;
                     user.pass = await cryptPass(this.data.pass);
                     this.db.User.create(user, err => {
                         if(err) this.send(err, 500);
@@ -48,9 +50,14 @@ class Auth {
         }
     }
 
-    session() {
-        if(this.data) this.session[this.data] = this.session[this.data]?!this.session[this.data]:true;
-        this.send(this.session);
+    session() { this.send(this.session.user); }
+
+    logout() {
+        delete this.session.user;
+        this.session.save(err => {
+            if(err) this.send(err, 500);
+            else this.send('success');
+        });
     }
 }
 

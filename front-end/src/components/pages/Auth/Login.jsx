@@ -22,6 +22,22 @@ class Login extends Component {
         this.formChange = this.formChange.bind(this);
         this.formSend = this.formSend.bind(this);
     }
+
+    componentDidMount() {
+        if(sessionStorage.getItem('register')) {
+            const email = sessionStorage.getItem('register');
+            this.refs.email.set(email);
+            this.refs.pass.focus();
+            sessionStorage.removeItem('register');
+            this.setState({
+                data: {email},
+                status: {
+                    type: 'info',
+                    text: 'Теперь Вы можете войти в свой аккаунт'
+                }
+            });
+        }
+    }
     
     formChange(e) {
         let data = this.state.data;
@@ -60,7 +76,10 @@ class Login extends Component {
                     type: 'success',
                     text: 'Вы успешно вошли в свой аккаунт'
                 };
-                setTimeout(() => this.props.history.push('/'), 700);
+                setTimeout(async () => {
+                    await this.props.App.checkSession();
+                    this.props.history.push('/private');
+                }, 700);
                 break;
             default: console.error(result); result = this.defaultStatus; break;
         }
@@ -78,21 +97,8 @@ class Login extends Component {
                 <form className="center" onSubmit={this.formSend}>
                     <Sign type={this.state.status.type} title="Вход" desk={this.state.status.text} />
                     <h2>Войдите в свой аккаунт {conf.title}</h2>
-                    <Input ref={inComp => {
-                        if(sessionStorage.getItem('register')) {
-                            const email = sessionStorage.getItem('register');
-                            inComp.set(email);
-                            sessionStorage.removeItem('register');
-                            this.setState({
-                                data: {email},
-                                status: {
-                                    type: 'info',
-                                    text: 'Теперь Вы можете войти в свой аккаунт'
-                                }
-                            });
-                        }
-                    }} onChange={this.formChange} name="email" type="email" placeholder="Введите email" />
-                    <Input onChange={this.formChange} name="pass" type="password" placeholder="Введите пароль" />
+                    <Input ref="email" onChange={this.formChange} name="email" type="email" placeholder="Введите email" />
+                    <Input ref="pass" onChange={this.formChange} name="pass" type="password" placeholder="Введите пароль" />
                     <button disabled={this.state.working} type="submit" className="btn btn-success">Войти</button>
                 </form>
             </div>
