@@ -1,3 +1,26 @@
+<template>
+    <header>
+        <router-link to="/" id="logo">{{config.title}}</router-link>
+        <div>
+            <router-link exact to="/" class="btn-header">Главная</router-link>
+            <template v-if="$store.getters.User.isLogged">
+                <button @click="$store.commit('logout')" class="btn-header">Выйти</button>
+            </template>
+            <template v-else>
+                <router-link exact to="/auth/login" class="btn-header">Вход</router-link>
+                <router-link exact to="/auth/register" class="btn-header">Регистрация</router-link>
+            </template>
+        </div>
+    </header>
+</template>
+
+<script>
+export default {
+	props: ['config']
+}
+</script>
+
+<style scoped>
 header {
     background: #fff;
     padding: 8px 5vw;
@@ -59,14 +82,4 @@ header > div { display: flex; }
     transition: 0.3s;
 }
 .btn-header:focus:before { opacity: 1; bottom: -2px; }
-
-.pace-inactive { opacity: 0; }
-.pace .pace-progress {
-    position: absolute;
-    background: #26a69a;
-    top: 46px;
-    left: 0;
-    height: 1px;
-    z-index: 2000;
-    box-shadow: rgba(38, 166, 154, 0.2) -5px 1px 0 0;
-}
+</style>

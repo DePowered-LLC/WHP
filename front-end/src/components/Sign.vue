@@ -1,3 +1,18 @@
+<template>
+    <div :class="'sign sign-'+type">
+        <span class="helper"></span>
+        <span class="title">{{title}}</span>
+        <div class="desk">{{desk || ''}}</div>
+    </div>
+</template>
+
+<script>
+export default {
+	props: ['type', 'title', 'desk']
+}
+</script>
+
+<style scoped>
 .sign {
     position: relative;
     background-color: rgba(0, 0, 0, 0.05);
@@ -97,3 +112,4 @@
 }
 
 .sign-hidden { display: none; }
+</style>

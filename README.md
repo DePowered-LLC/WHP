@@ -2,13 +2,13 @@
 
 ## Технологии
 
-* [ReactJS](https://github.com/facebook/react)
-* [BabelJS](https://github.com/babel/babel)
+* [Axios](https://github.com/axios/axios)
+* [dc-api-core](https://github.com/DimaCrafter/dc-api-core)
 * [Express](https://github.com/expressjs/express)
 * [Mongoose](https://github.com/Automattic/mongoose)
-* [Axios](https://github.com/axios/axios)
 * [MongoDB](https://github.com/mongodb/mongo)
-* [dc-api-core](https://github.com/DimaCrafter/dc-api-core)
+* [Vue](https://github.com/vuejs/vue)
+* [Vuex](https://github.com/vuejs/vuex)
 
 ---
 
@@ -23,8 +23,9 @@
  └── 📰 front-end           Браузерная часть
      ├── 📁 public          Статичные файлы
      └── 📁 src             Корень приложения
-         └── 📚 components  Компоненты приложения
-             └── 🗂️ pages   Страницы сайта
+         ├── 💽 assets      Приложения
+         ├── 📚 components  Компоненты приложения
+         └── 🗂️ views       Страницы сайта
 ```
 
 ---

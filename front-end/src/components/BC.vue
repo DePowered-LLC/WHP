@@ -1,3 +1,19 @@
+<template>
+    <p class="bc">
+        <router-link to="/" class="part">{{config.title}}</router-link>
+        <span v-for="(part, key) in path" :key="key" class="part">{{part}}</span>
+    </p>
+</template>
+
+<script>
+import config from '@/config.json'
+export default {
+	props: ['path'],
+	data: () => ({ config })
+}
+</script>
+
+<style scoped>
 .bc {
     display: flex;
     background-color: rgba(0, 0, 0, 0.05);
@@ -26,3 +42,4 @@
     background-color: #0000001f;
     transform: skewX(-30deg);
 }
+</style>
