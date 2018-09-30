@@ -18,7 +18,8 @@ import E403 from '@/views/E403.vue'
 
 export default {
 	components: { Header, E403 },
-	data: () => ({ config })
+	data: () => ({ config }),
+	created () { this.$store.commit('checkSession'); }
 }
 </script>
 

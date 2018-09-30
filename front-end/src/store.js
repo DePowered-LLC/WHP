@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import API from './API'
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
 	state: {
@@ -22,13 +22,13 @@ const store = new Vuex.Store({
 		loading (s, val) { s.loading = !!val },
 
 		async checkSession (s) {
-			s.loading = true
-			const result = await API.auth.session()
-			if (result.msg) {
+			s.loading = true;
+			const result = await API.auth.session();
+			if (result.success && result.msg) {
 				s.User.isLogged = true
 				s.User.session = result.msg
 			}
-			s.loading = false
+			s.loading = false;
 		},
 
 		async logout (s) {
@@ -46,6 +46,6 @@ const store = new Vuex.Store({
 	actions: {
 
 	}
-})
+});
 
 export default store

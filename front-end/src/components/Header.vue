@@ -4,7 +4,12 @@
         <div>
             <router-link exact to="/" class="btn-header">Главная</router-link>
             <template v-if="$store.getters.User.isLogged">
-                <button @click="$store.commit('logout')" class="btn-header">Выйти</button>
+                <Dropdown id="profile-block">
+                    <template slot="heading">{{session().name[0]}}</template>
+                    <template slot="body">
+                        <button @click="$store.commit('logout')">Выйти</button>
+                    </template>
+                </Dropdown>
             </template>
             <template v-else>
                 <router-link exact to="/auth/login" class="btn-header">Вход</router-link>
@@ -15,8 +20,13 @@
 </template>
 
 <script>
+import Dropdown from '@/components/Dropdown'
 export default {
-	props: ['config']
+	props: ['config'],
+	components: { Dropdown },
+	methods: {
+		session () { return this.$store.getters.User.session; }
+	}
 }
 </script>
 

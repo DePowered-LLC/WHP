@@ -1,9 +1,9 @@
 <template>
-	<div class="page-container">{{$store.getters.User}}</div>
+	<div class="page-container"></div>
 </template>
 
 <script>
 export default {
-	// auth: true
+
 }
 </script>
