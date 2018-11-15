@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #e8ecf1;
+    color: #232324;
+}
+
+h1 {
+    border-bottom: 1px solid #232324;
+    padding-bottom: 5px;
+    font-size: 50px;
+    font-weight: 100;
+    margin: 0;
+}
+
+code {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 2px 5px;
+    border-radius: 3px;
+}

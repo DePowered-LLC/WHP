@@ -4,6 +4,7 @@
         <div>
             <router-link exact to="/" class="btn-header">Главная</router-link>
             <template v-if="$store.getters.User.isLogged">
+                <router-link to="/sites" class="btn-header">Сайты</router-link>
                 <Dropdown id="profile-block">
                     <template slot="heading">{{session().name[0]}}</template>
                     <template slot="body">
