@@ -7,10 +7,3 @@
         <router-link to="/" class="btn btn-success">Главная</router-link>
     </div>
 </template>
-
-<script>
-import BC from '@/components/BC.vue'
-export default {
-	components: { BC }
-}
-</script>

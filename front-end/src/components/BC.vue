@@ -6,10 +6,8 @@
 </template>
 
 <script>
-import config from '@/config.json'
 export default {
-	props: ['path'],
-	data: () => ({ config })
+	props: ['path']
 }
 </script>
 

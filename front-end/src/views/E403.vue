@@ -8,10 +8,3 @@
         <router-link to="/auth/login" class="btn btn-info">Вход</router-link>
     </div>
 </template>
-
-<script>
-import BC from '@/components/BC.vue'
-export default {
-	components: { BC }
-}
-</script>

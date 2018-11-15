@@ -3,6 +3,7 @@
 ## Технологии
 
 * [Node.js](https://github.com/nodejs/node)
+* [Apache](https://httpd.apache.org)
 * [Axios](https://github.com/axios/axios)
 * [dc-api-core](https://github.com/DimaCrafter/dc-api-core)
 * [Express](https://github.com/expressjs/express)
@@ -17,17 +18,28 @@
 
 ```txt
 📙
- ├── 📦 back-end            Серверная часть (dc-api-core)
- │   ├── ⚙️ controllers     Контроллеры запросов
- │   └── 🗃️ models          Модели для работы с БД
- ├── 📰 front-end           Браузерная часть
- │   ├── 📁 public          Статичные файлы
- │   └── 📁 src             Корень приложения
- │       ├── 💽 assets      Приложения
- │       ├── 📚 components  Компоненты приложения
- │       └── 🗂️ views       Страницы сайта
+ ├── 📦 back-end             Серверная часть (dc-api-core)
+ │   ├── ⚙️ controllers      Контроллеры запросов
+ │   ├── 🗃️ models           Модели для работы с БД
+ │   └── 📁 site_template    Шаблоны, используемые при создании сайта
+ │       ├── 📁 public_html  Файлы сайта по-умолчанию
+ │       └── ⚙️ apache.conf  Конфигурационный файл Apache
+ ├── 📰 front-end            Браузерная часть
+ │   ├── 📁 public           Статичные файлы
+ │   └── 📁 src              Корень приложения
+ │       ├── 💽 assets       Приложения
+ │       ├── 📚 components   Основные компоненты приложения
+ │       ├── 🎨 styles       Наборы стилей
+ │       └── 🗂️ views        Страницы сайта
  ├── 🔐 ssl                  Хранилище SSL сертификатов
- └── ⚙️ config.json          Основной 
+ └── ⚙️ config.json          Основной конфигурационный файл
 ```
 
 Всю информация по установке, настройке и использованию вы можете найти в [нашей вики](https://github.com/MayerDevelopment/WHP/wiki)
+
+---
+
+## Планы на будущее
+
+* Автоматическое создание сайтов
+* Локализация

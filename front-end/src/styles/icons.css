@@ -1,0 +1,24 @@
+[class^="icon-"] {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    transition: 0.3s;
+}
+
+[class^="icon-"]:before, [class^="icon-"]:after {
+    content: '';
+    position: absolute;
+    transition: 0.3s;
+}
+
+.icon-plus:before, .icon-plus:after {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #000;
+    margin: auto;
+}
+.icon-plus:after { transform: rotateZ(90deg); }

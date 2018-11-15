@@ -20,10 +20,7 @@
 </template>
 
 <script>
-import Dropdown from '@/components/Dropdown'
 export default {
-	props: ['config'],
-	components: { Dropdown },
 	methods: {
 		session () { return this.$store.getters.User.session; }
 	}

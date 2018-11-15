@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    border: 1px solid #c5c5c5;
+}
+
+thead > * {
+    background-color: #f0f0f0;
+    padding: 7px 3.5px;
+    font-size: 16px;
+    border-bottom: 1px solid #c5c5c5;
+}
+
+tr > * {
+    font-size: 15px;
+    padding: 5px 3.5px;
+}
+
+tr.selected > * {
+	background-color: #2196F3;
+	color: #fff;
+}
+
+tr:nth-child(odd) > * { background-color: #fff; }
+tr.selected:nth-child(odd) > * { background-color: #42a5f5; }
+td:first-child, th:first-child { text-align: center; }

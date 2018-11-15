@@ -18,13 +18,9 @@
 
 <script>
 import API from '@/API'
-import BC from '@/components/BC.vue'
-import Input from '@/components/Input.vue'
-import Sign from '@/components/Sign.vue'
 const defaultStatus = { type: 'error', text: 'Сбой сервера, попробуйте позже' }
 export default {
 	props: ['config'],
-	components: { BC, Sign, Input },
 	data: () => ({
 		working: false,
 		status: {
