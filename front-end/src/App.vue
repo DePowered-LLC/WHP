@@ -1,10 +1,10 @@
 <template>
 	<div id="app">
 		<div id="loader" :class="$store.getters.loading ? '' : 'hidden'"></div>
-		<Header :config="config" />
+		<Header />
 		<div id="wrapper">
 			<transition name="router-anim">
-				<router-view v-if="$store.getters.drawRouter" :config="config" />
+				<router-view v-if="$store.getters.drawRouter" />
 				<E403 v-else />
 			</transition>
 		</div>
@@ -13,12 +13,10 @@
 
 <script>
 import Header from '@/components/Header.vue'
-import config from '@/config'
 import E403 from '@/views/E403.vue'
 
 export default {
 	components: { Header, E403 },
-	data: () => ({ config }),
 	created () { this.$store.commit('checkSession'); }
 }
 </script>

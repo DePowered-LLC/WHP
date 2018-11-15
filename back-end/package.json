@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node node_modules/dc-api-core"
+    "start": "node node_modules/dc-api-core --cfg ../config.json"
   },
   "dependencies": {
     "bcrypt": "^3.0.2",

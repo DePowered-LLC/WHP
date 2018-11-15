@@ -2,6 +2,7 @@
 
 ## Технологии
 
+* [Node.js](https://github.com/nodejs/node)
 * [Axios](https://github.com/axios/axios)
 * [dc-api-core](https://github.com/DimaCrafter/dc-api-core)
 * [Express](https://github.com/expressjs/express)
@@ -19,18 +20,14 @@
  ├── 📦 back-end            Серверная часть (dc-api-core)
  │   ├── ⚙️ controllers     Контроллеры запросов
  │   └── 🗃️ models          Модели для работы с БД
- ├── 🛢️ db                   Хранилище БД
- └── 📰 front-end           Браузерная часть
-     ├── 📁 public          Статичные файлы
-     └── 📁 src             Корень приложения
-         ├── 💽 assets      Приложения
-         ├── 📚 components  Компоненты приложения
-         └── 🗂️ views       Страницы сайта
+ ├── 📰 front-end           Браузерная часть
+ │   ├── 📁 public          Статичные файлы
+ │   └── 📁 src             Корень приложения
+ │       ├── 💽 assets      Приложения
+ │       ├── 📚 components  Компоненты приложения
+ │       └── 🗂️ views       Страницы сайта
+ ├── 🔐 ssl                  Хранилище SSL сертификатов
+ └── ⚙️ config.json          Основной 
 ```
 
----
-
-## Авторы проекта
-
-* Артём Майер
-* Дмитрий Ширяев
+Всю информация по установке, настройке и использованию вы можете найти в [нашей вики](https://github.com/MayerDevelopment/WHP/wiki)

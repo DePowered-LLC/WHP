@@ -1,0 +1,15 @@
+{
+    "title": "WHP",
+    "db": {
+        "host": "192.168.0.100",
+        "name": "whp"
+    },
+    "session": {
+        "secret": "whp"
+    },
+    "ssl": {
+        "cert": "ssl/depowered.ru.crt",
+        "key": "ssl/depowered.ru.key"
+    },
+    "devMode": true
+}
