@@ -1,6 +1,6 @@
 <template>
     <p class="bc">
-        <router-link to="/" class="part">{{config.title}}</router-link>
+        <router-link to="/" class="part">{{ config.title }}</router-link>
         <span v-for="(part, key) in path" :key="key" class="part">{{part}}</span>
     </p>
 </template>

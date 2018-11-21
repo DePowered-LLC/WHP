@@ -1,18 +1,17 @@
 <template>
 	<div class="page-container">
-		<BC :path="['Сайты', 'Создать новый']" />
+		<BC :path="[lang.Sites, lang.Create]" />
 		<form class="center" @submit="formSend">
-			<Sign :type="status.type" title="Создание сайта" :desk="status.text" />
-			<h2>Создать сайт</h2>
-			<Input v-model="domain" name="domain" placeholder="Домен" />
-			<button :disabled="working" type="submit" class="btn btn-success">Создать</button>
+			<Sign :type="status.type" :title="lang.SiteCreation" :desk="lang[status.text]" />
+			<h2>{{ lang.Create }} {{ lang.Site.toLowerCase() }}</h2>
+			<Input v-model="domain" name="domain" :placeholder="lang.Domain" />
+			<button :disabled="working" type="submit" class="btn btn-success">{{ lang.Create }}</button>
 		</form>
 	</div>
 </template>
 
 <script>
 import API from '@/API'
-const defaultStatus = { type: 'error', text: 'Сбой сервера, попробуйте позже' }
 export default {
 	auth: true,
 	data: () => ({
@@ -38,13 +37,13 @@ export default {
 					case 'copy_template_error':
 						this.status = {
 							type: 'warning',
-							text: 'Невозможно скопировать шаблон сайта.\nПопытка продолжить создание...'
+							text: 'CopyTemplateError'
 						}
 						break;
 					case 'enable_error':
 						this.status = {
 							type: 'error',
-							text: 'Невозможно перезагрузить веб-сервер...'
+							text: 'SiteEnableError'
 						}
 						this.working = false;
 						break;
@@ -55,42 +54,35 @@ export default {
 					console.error(res.msg);
 				} else {
 					switch (res.msg) {
-					case 'db_error':
-						this.status = {
-							type: 'error',
-							text: 'Ошибка базы данных'
-						};
-						this.working = false;
-						break;
 					case 'domain_taken':
 						this.status = {
 							type: 'warning',
-							text: 'Домен занят'
+							text: 'DomainTaken'
 						};
 						this.working = false;
 						break;
 					case 'creating_config':
 						this.status = {
 							type: 'info',
-							text: 'Создание файлов конфигураций...'
+							text: 'CreatingConfigs'
 						}
 						break;
 					case 'creating_directories':
 						this.status = {
 							type: 'info',
-							text: 'Создание директорий...'
+							text: 'CreatingDirectories'
 						}
 						break;
 					case 'connected':
 						this.status = {
 							type: 'info',
-							text: 'Подключение установлено'
+							text: 'Connected'
 						};
 						break;
 					case 'success':
 						this.status = {
 							type: 'success',
-							text: 'Сайт был успешно создан'
+							text: 'SiteCreateSuccess'
 						};
 						setTimeout(async () => {
 							this.$router.push('/sites/' + this.domain);
@@ -99,7 +91,7 @@ export default {
 						break;
 					default:
 						console.error(res);
-						this.status = defaultStatus;
+						this.status = { type: 'error', text: 'ServerError' };
 						this.working = false;
 						break;
 					}

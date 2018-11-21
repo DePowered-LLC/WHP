@@ -1,0 +1,49 @@
+{
+    "LanguageName": "English",
+    "Language": "Language",
+    "Home": "Home",
+    "Connected": "Connected",
+    "Create": "Create",
+    
+    "Authorization": "Authorization",
+    "LogIn": "Log in",
+    "AccountLogIn": "Log in to $0 account",
+    "AccountNotFound": "Account not found",
+    "WrongPassword": "Wrong password",
+    "LogInSuccess": "You successfully logged in to your account",
+    "PasswordsDontMatch": "Passwords don't match",
+
+    "CreateAccount": "Create an account",
+    "AccountRegistration": "$0 Account Registration",
+    "FirstName": "First name",
+    "LastName": "Last name",
+    "Password": "Password",
+    "RepeatPassword": "Repeat password",
+    "PasswordsLength": "Password must contain from 8 to 32 symbols",
+    "EmailTaken": "This email already taken",
+    "AccountCreateSuccess": "Now you can log in to your account",
+    "RegisterSuccess": "Account was successfully registered",
+
+    "LogOut": "Log out",
+
+    "ServerError": "Server error, try again later",
+
+    "Sites": "Sites",
+    "Site": "Site",
+    "All": "All",
+    "NoSites": "You don`t have sites",
+    "Domain": "Domain",
+    "Status": "Status",
+    "SiteCreation": "Site creation",
+    "DomainTaken": "Domain taken",
+    "SiteEnableError": "Can`t restart webserver",
+    "CopyTemplateError": "Can`t copy site template.\nTrying to continue...",
+    "CreatingConfigs": "Creating configuration files...",
+    "CreatingDirectories": "Creating directories...",
+    "SiteCreateSuccess": "Site was successfully created",
+
+    "Unknow": "Unknown",
+    "Configurated": "Configurated",
+    "Disabled": "Disabled",
+    "Enabled": "Enabled"
+}

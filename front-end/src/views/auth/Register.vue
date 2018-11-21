@@ -1,26 +1,24 @@
 <template>
     <div class="page-container">
-        <BC :path="['Авторизация', 'Регистрация']" />
+        <BC :path="[lang.Authorization, lang.CreateAccount]" />
         <form class="center" @submit="formSend">
-            <Sign :type="status.type" title="Регистрация" :desk="status.text" />
-            <h2>Регистрация аккаунта {{config.title}}</h2>
-            <Input v-model="data.email" name="email" type="email" placeholder="Введите email" />
+            <Sign :type="status.type" :title="lang.CreateAccount" :desk="lang[status.text]" />
+            <h2>{{ lang.AccountRegistration(config.title) }}</h2>
+            <Input v-model="data.email" name="email" type="email" placeholder="Email" />
             <div style="display: flex">
-                <Input v-model="data.first_name" name="first_name" type="text" placeholder="Введите имя" />
-                <Input v-model="data.last_name" name="last_name" type="text" placeholder="Введите фамилию" />
+                <Input v-model="data.first_name" name="first_name" type="text" :placeholder="lang.FirstName" />
+                <Input v-model="data.last_name" name="last_name" type="text" :placeholder="lang.LastName" />
             </div>
-            <Input v-model="data.pass" type="password" name="pass" placeholder="Введите пароль" />
-            <Input v-model="data.passr" type="password" name="passr" placeholder="Повторите пароль" />
-            <button :disabled="working" type="submit" class="btn btn-success">Зарегистрироваться</button>
+            <Input v-model="data.pass" type="password" name="pass" :placeholder="lang.Password" />
+            <Input v-model="data.passr" type="password" name="passr" :placeholder="lang.RepeatPassword" />
+            <button :disabled="working" type="submit" class="btn btn-success">{{ lang.CreateAccount }}</button>
         </form>
     </div>
 </template>
 
 <script>
 import API from '@/API'
-const defaultStatus = { type: 'error', text: 'Сбой сервера, попробуйте позже' }
 export default {
-	props: ['config'],
 	data: () => ({
 		working: false,
 		status: {
@@ -34,53 +32,54 @@ export default {
 			this.status = {
 				type: 'hidden',
 				text: ''
-			}
-			this.working = true
-			e.preventDefault()
+			};
+			this.working = true;
+			e.preventDefault();
 
 			if (this.data.pass !== this.data.passr) {
 				this.status = {
 					type: 'warning',
-					text: 'Пароли не совпадают'
-				}
+					text: 'PasswordsDontMatch'
+				};
 			} else if (this.data.pass.length < 8 || this.data.pass.length > 32) {
 				this.status = {
 					type: 'warning',
-					text: 'Пароль должен содержать от 8 до 32 символов'
-				}
+					text: 'PasswordsLength'
+				};
 			} else {
-				let result = await API.auth.register(this.data)
+				let result = await API.auth.register(this.data);
 				switch (result.msg) {
 				case 'passwords_doesnt_match':
 					this.status = {
 						type: 'warning',
-						text: 'Пароли не совпадают'
-					}
-					break
+						text: 'PasswordsDontMatch'
+					};
+					break;
 				case 'password_length':
 					this.status = {
 						type: 'warning',
-						text: 'Пароль должен содержать от 8 до 32 символов'
-					}
-					break
+						text: 'PasswordsLength'
+					};
+					break;
 				case 'email_taken':
 					this.status = {
 						type: 'warning',
-						text: 'Данный email уже занят'
-					}
-					break
+						text: 'EmailTaken'
+					};
+					break;
 				case 'success':
 					this.status = {
 						type: 'success',
-						text: 'Аккаунт был успешно зарегистрирован'
-					}
-					sessionStorage.setItem('register', this.data.email)
-					setTimeout(() => this.$router.push('/auth/login'), 1000)
-					break
+						text: 'RegisterSuccess'
+					};
+
+					sessionStorage.setItem('register', this.data.email);
+					setTimeout(() => this.$router.push('/auth/login'), 1000);
+					break;
 				default:
-					console.error(result)
-					this.status = defaultStatus
-					break
+					console.error(result);
+					this.status = { type: 'error', text: 'ServerError' };
+					break;
 				}
 			}
 			this.working = false

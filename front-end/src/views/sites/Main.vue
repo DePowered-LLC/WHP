@@ -1,7 +1,7 @@
 <template>
 	<div class="page-container center">
-		<BC :path="['Сайты', 'Все']" />
-		<h2>Ваши сайты</h2>
+		<BC :path="[lang.Sites, lang.All]" />
+		<h2>{{ lang.All }} {{ lang.Sites.toLowerCase() }}</h2>
 		<ToolPanel>
 			<ToolPanelItem link="/sites/create" name="Создать" icon="plus" />
 			<ToolPanelItem name="FTP" icon="directory" />
@@ -15,8 +15,8 @@
 				<th style="width: 30px;">
 					<input type="checkbox" @change="select(-1, $event)" />
 				</th>
-				<th>Доменное имя</th>
-				<th>Статус</th>
+				<th>{{ lang.Domain }}</th>
+				<th>{{ lang.Status }}</th>
 			</thead>
 			<tbody>
 				<tr v-for="(site, key) in sites" :key="key"
@@ -24,7 +24,10 @@
 					:class="site.selected ? 'selected' : ''">
 					<td><input type="checkbox" :checked="site.selected" /></td>
 					<td>{{ site.domain }}</td>
-					<td>{{ getStatus(site.status) }}</td>
+					<td>{{ lang[site.status.firstUpper()] }}</td>
+				</tr>
+				<tr v-if="sites.length === 0">
+					<td colspan="3">{{ lang.NoSites }}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -62,15 +65,6 @@ export default {
 				});
 			} else {
 				this.sites[siteKey].selected = !this.sites[siteKey].selected;
-			}
-		},
-
-		getStatus (input) {
-			switch (input) {
-			case 'unknown': return 'Неизвестно';
-			case 'configurated': return 'Настроен';
-			case 'disabled': return 'Выключен';
-			case 'enabled': return 'Включен';
 			}
 		},
 

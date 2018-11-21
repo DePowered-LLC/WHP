@@ -1,0 +1,49 @@
+{
+    "LanguageName": "Русский",
+    "Language": "Язык",
+    "Home": "Главная",
+    "Connected": "Подключено",
+    "Create": "Создать",
+
+    "Authorization": "Авторизация",
+    "LogIn": "Войти",
+    "AccountLogIn": "Вход в аккаунт $0",
+    "AccountNotFound": "Аккаунт не найден",
+    "WrongPassword": "Пароль не верный",
+    "LogInSuccess": "Вы успешно вошли в свой аккаунт",
+    "PasswordsDontMatch": "Пароли не совпадают",
+
+    "CreateAccount": "Создать аккаунт",
+    "AccountRegistration": "Регистрация аккаунта $0",
+    "FirstName": "Имя",
+    "LastName": "Фамилия",
+    "Password": "Пароль",
+    "RepeatPassword": "Повторите пароль",
+    "PasswordsLength": "Пароль должен содержать от 8 до 32 символов",
+    "EmailTaken": "Данный email уже занят",
+    "AccountCreateSuccess": "Теперь Вы можете войти в свой аккаунт",
+    "RegisterSuccess": "Аккаунт был успешно зарегистрирован",
+
+    "LogOut": "Выйти",
+    
+    "ServerError": "Сбой сервера, попробуйте позже",
+    
+    "Sites": "Сайты",
+    "Site": "Сайт",
+    "All": "Все",
+    "NoSites": "У Вас нет сайтов",
+    "Domain": "Домен",
+    "Status": "Статус",
+    "SiteCreation": "Создание сайта",
+    "DomainTaken": "Домен занят",
+    "SiteEnableError": "Невозможно перезагрузить веб-сервер",
+    "CopyTemplateError": "Невозможно скопировать шаблон сайта.\nПопытка продолжить...",
+    "CreatingConfigs": "Создание конфигурационных файлов...",
+    "CreatingDirectories": "Создание директорий...",
+    "SiteCreateSuccess": "Сайт был успешно создан",
+
+    "Unknow": "Неизвестно",
+    "Configurated": "Настроен",
+    "Disabled": "Выключен",
+    "Enabled": "Включен"
+}

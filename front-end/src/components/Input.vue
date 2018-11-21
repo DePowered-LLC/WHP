@@ -11,7 +11,7 @@ export default {
 		value: [String, Number],
 		name: String,
 		type: { type: String, default: 'text' },
-		placeholder: String
+		placeholder: [String, Function]
 	},
 	data: () => ({
 		active: false

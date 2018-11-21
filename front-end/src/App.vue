@@ -21,7 +21,6 @@ import '@/styles/formatting.css'
 import '@/styles/icons.css'
 import '@/styles/loader.css'
 import '@/styles/tables.css'
-
 export default {
 	components: { E403, IconSprite },
 	created () { this.$store.commit('checkSession'); }

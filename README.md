@@ -1,6 +1,8 @@
-# Панель управления WHP
+# Web hosting control panel
 
-## Технологии
+Languages: [Русский](https://github.com/MayerDevelopment/WHP/blob/master/README.ru.md), **English**
+
+## Technologies
 
 * [Node.js](https://github.com/nodejs/node)
 * [Apache](https://httpd.apache.org)
@@ -14,31 +16,36 @@
 
 ---
 
-## Структура
+## Structure
 
 ```txt
 📙
- ├── 📦 back-end             Серверная часть (dc-api-core)
- │   ├── ⚙️ controllers      Контроллеры запросов
- │   ├── 🗃️ models           Модели для работы с БД
- │   └── 📁 site_template    Шаблоны, используемые при создании сайта
- │       ├── 📁 public_html  Файлы сайта по-умолчанию
- │       └── ⚙️ apache.conf  Конфигурационный файл Apache
- ├── 📰 front-end            Браузерная часть
- │   ├── 📁 public           Статичные файлы
- │   └── 📁 src              Корень приложения
- │       ├── 💽 assets       Приложения
- │       ├── 📚 components   Основные компоненты приложения
- │       ├── 🎨 styles       Наборы стилей
- │       └── 🗂️ views        Страницы сайта
- ├── 🔐 ssl                  Хранилище SSL сертификатов
- └── ⚙️ config.json          Основной конфигурационный файл
+ ├── 📦 back-end             Server part (dc-api-core)
+ │   ├── ⚙️ controllers      Request controllers
+ │   ├── 🗃️ models           Models for working with DB
+ │   └── 📁 site_template    Templates, that used while creating site
+ │       ├── 📁 public_html  Default site files
+ │       └── ⚙️ apache.conf  Apache configuration file
+ ├── 📰 front-end            Browser part
+ │   ├── 📁 public           Static files
+ │   └── 📁 src              App root
+ │       ├── 💽 assets       Assets
+ │       ├── 📚 components   Basic application components
+ │       ├── 🌍 lang         Localization files
+ │       ├── 🎨 styles       Style kits
+ │       └── 🗂️ views        Site pages
+ ├── 🔐 ssl                  SSL certificates storage
+ └── ⚙️ config.json          Main configuration file
 ```
 
-Всю информация по установке, настройке и использованию вы можете найти в [нашей вики](https://github.com/MayerDevelopment/WHP/wiki)
+All information about install, setup and using you can fing in [our wiki](https://github.com/MayerDevelopment/WHP/wiki)
 
 ---
 
-## Планы на будущее
+## Future plans
 
-* Локализация
+* Site removing
+* Site re-creation
+* Working with DB
+* Working with FTP
+* Working with DNS and domains

@@ -1,21 +1,32 @@
 <template>
     <header>
-        <router-link to="/" id="logo">{{config.title}}</router-link>
+        <router-link to="/" id="logo">{{ config.title }}</router-link>
         <div>
-            <router-link exact to="/" class="btn-header">Главная</router-link>
+            <router-link exact to="/" class="btn-header">{{ lang.Home }}</router-link>
+
             <template v-if="$store.getters.User.isLogged">
-                <router-link to="/sites" class="btn-header">Сайты</router-link>
+                <router-link to="/sites" class="btn-header">{{ lang.Sites }}</router-link>
                 <Dropdown id="profile-block">
                     <template slot="heading">{{session().name[0]}}</template>
                     <template slot="body">
-                        <button @click="$store.commit('logout')">Выйти</button>
+                        <button @click="$store.commit('logout')">{{ lang.LogOut }}</button>
                     </template>
                 </Dropdown>
             </template>
+
             <template v-else>
-                <router-link exact to="/auth/login" class="btn-header">Вход</router-link>
-                <router-link exact to="/auth/register" class="btn-header">Регистрация</router-link>
+                <router-link exact to="/auth/login" class="btn-header">{{ lang.LogIn }}</router-link>
+                <router-link exact to="/auth/register" class="btn-header">{{ lang.CreateAccount }}</router-link>
             </template>
+
+            <Dropdown id="changeLang">
+                <template slot="heading">{{ lang.Language }}</template>
+                <template slot="body">
+                    <button v-for="locale in lang._list" :key="locale.code" @click="setLang(locale.code)">
+                        {{ locale.name }}
+                    </button>
+                </template>
+            </Dropdown>
         </div>
     </header>
 </template>

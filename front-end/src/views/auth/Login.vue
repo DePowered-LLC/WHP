@@ -1,21 +1,19 @@
 <template>
 	<div class="page-container">
-		<BC :path="['Авторизация', 'Вход']" />
+		<BC :path="[lang.Authorization, lang.LogIn]" />
 		<form class="center" @submit="formSend">
-			<Sign :type="status.type" title="Вход" :desk="status.text" />
-            <h2>Вход в аккаунт {{config.title}}</h2>
-			<Input v-model="data.email" name="email" type="email" placeholder="Введите email" />
-			<Input v-model="data.pass" name="pass" type="password" placeholder="Введите пароль" />
-			<button :disabled="working" type="submit" class="btn btn-success">Войти</button>
+			<Sign :type="status.type" :title="lang.LogIn" :desk="lang[status.text]" />
+            <h2>{{ lang.AccountLogIn(config.title) }}</h2>
+			<Input v-model="data.email" name="email" type="email" placeholder="Email" />
+			<Input v-model="data.pass" name="pass" type="password" :placeholder="lang.Password" />
+			<button :disabled="working" type="submit" class="btn btn-success">{{ lang.LogIn }}</button>
 		</form>
 	</div>
 </template>
 
 <script>
 import API from '@/API'
-const defaultStatus = { type: 'error', text: 'Сбой сервера, попробуйте позже' }
 export default {
-	props: ['config'],
 	data: () => ({
 		working: false,
 		status: {
@@ -34,7 +32,7 @@ export default {
 				sessionStorage.removeItem('register');
 				this.status = {
 					type: 'info',
-					text: 'Теперь Вы можете войти в свой аккаунт'
+					text: 'AccountCreateSuccess'
 				};
 			});
 		}
@@ -44,40 +42,41 @@ export default {
 			this.status = {
 				type: 'hidden',
 				text: ''
-			}
-			this.working = true
-			e.preventDefault()
+			};
+			this.working = true;
+			e.preventDefault();
 
-			let result = await API.auth.login(this.data)
+			let result = await API.auth.login(this.data);
 			switch (result.msg) {
 			case 'no_account':
 				this.status = {
 					type: 'error',
-					text: 'Аккаунт не найден'
-				}
-				break
+					text: 'AccountNotFound'
+				};
+				break;
 			case 'wrong_password':
 				this.status = {
 					type: 'warning',
-					text: 'Пароль не верный'
-				}
-				break
+					text: 'WrongPassword'
+				};
+				break;
 			case 'success':
 				this.status = {
 					type: 'success',
-					text: 'Вы успешно вошли в свой аккаунт'
-				}
+					text: 'LogInSuccess'
+				};
+
 				setTimeout(async () => {
-					await this.$store.commit('checkSession')
-					this.$router.push('/')
-				}, 700)
-				break
+					await this.$store.commit('checkSession');
+					this.$router.push('/');
+				}, 700);
+				break;
 			default:
-				console.error(result)
-				this.status = defaultStatus
-				break
+				console.error(result);
+				this.status = { type: 'error', text: 'ServerError' };
+				break;
 			}
-			this.working = false
+			this.working = false;
 		}
 	}
 }

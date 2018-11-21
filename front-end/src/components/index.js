@@ -12,5 +12,3 @@ import Vue from 'vue'
 ].forEach(component => {
 	Vue.component(component, require(`./${component}.vue`).default);
 });
-
-Vue.$globalTest = 123;
