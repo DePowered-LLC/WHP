@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import API from '@/API'
 class SiteModel {
 	domain = ''
 	selected = false
@@ -48,17 +49,13 @@ export default {
 	data: () => ({
 		sites: []
 	}),
-	created () {
-		const chars = '1234567890qwertyuiopasdfghjklzxcvbnms';
-		for (let i = 0; i < Math.random() * 10; i++) {
-			let domain = '';
-			while (domain.length < Math.random() * 12) domain += chars[Math.round(Math.random() * chars.length)];
-			this.sites.push(new SiteModel({ domain }));
-		}
+	async created () {
+		const sites = await API.sites.all();
+		console.log(sites);
+		sites.msg.forEach(data => this.sites.push(new SiteModel(data)));
 	},
 	methods: {
 		select (siteKey, e) {
-			console.log(this.config);
 			if (siteKey < 0) {
 				Object.keys(this.sites).forEach(siteKey => {
 					this.sites[siteKey].selected = e.target.checked;

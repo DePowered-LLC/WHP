@@ -10,6 +10,5 @@
     "ssl": {
         "cert": "ssl/depowered.ru.crt",
         "key": "ssl/depowered.ru.key"
-    },
-    "devMode": true
+    }
 }

@@ -14,34 +14,49 @@ class Sites {
         };
 
         try { var site = await this.db.Site.findOne({domain: siteData.domain}); }
-        catch(err) { this.end(['db_error', err], 500); return; }
+        catch(err) { this.end(err, 500); return; }
 
         if(site) this.end('domain_taken', 400);
         else {
             try {
                 this.send('creating_config');
                 await SiteTools.createConfig(siteData);
-        
-                site = {};
-                site.user = this.session.user._id;
-                site.domain = siteData.domain;
-                site.status = 'configurated';
+
+                site = new this.db.Site({
+                    owner: this.session.user._id,
+                    domain: siteData.domain,
+                    status: 'configurated'
+                });
+                site.save();
 
                 this.send('creating_directories');
                 await SiteTools.createDirectories(siteData);
                 site.status = 'disabled';
+                site.save();
 
                 try { await SiteTools.copyTemplate(siteData); }
                 catch(err) { this.send(err, 500); }
 
                 await SiteTools.enable(siteData);
                 site.status = 'enabled';
+                site.save();
                 this.end('success');
             } catch(err) {
                 this.end(err, 500);
                 return;
             }
         }
+    }
+
+    async all() {
+        const sites = await this.db.Site.find({
+            owner: this.session.user._id
+        });
+        
+        this.send(sites.map(site => ({
+            domain: site.domain,
+            status: site.status
+        })));
     }
 }
 

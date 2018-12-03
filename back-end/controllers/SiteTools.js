@@ -28,6 +28,7 @@ module.exports = {
     },
 
     async createDirectories(siteData) {
+        console.log(123);
         try {
             await mkdirs({
                 'user`s root'  : `/home/u${siteData.id}`,

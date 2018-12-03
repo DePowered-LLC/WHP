@@ -13,6 +13,7 @@ class Auth {
         else if(!await bcrypt.compare(this.data.pass, user.pass)) this.send('wrong_password');
         else {
             this.session.user = {
+                _id: user._id,
                 uid: user.uid,
                 email: user.email,
                 balance: user.balance,
