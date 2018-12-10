@@ -15,12 +15,12 @@ Vue.mixin({
 	data: () => ({ config })
 });
 
-/* eslint no-extend-native: ["error", { "exceptions": ["String"] }] */
+// eslint-disable-next-line
 String.prototype.firstUpper = function () {
 	return this.slice(0, 1).toUpperCase() + this.slice(1);
 };
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 new Vue({
 	store,
 	router,

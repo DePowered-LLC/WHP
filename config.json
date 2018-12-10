@@ -1,14 +1,27 @@
 {
     "title": "WHP",
     "db": {
-        "host": "192.168.0.100",
-        "name": "whp"
+        "mongo": {
+            "host": "192.168.0.100",
+            "name": "test"
+        },
+        "mongo.test": {
+            "host": "192.168.0.100",
+            "name": "test2"
+        },
+        "mysql.cfgName": {
+            "host": "localhost",
+            "name": "test"
+        }
     },
     "session": {
         "secret": "whp"
     },
-    "ssl": {
+    "--ssl": {
         "cert": "ssl/depowered.ru.crt",
         "key": "ssl/depowered.ru.key"
-    }
+    },
+    "plugins": [
+        "dc-api-mongo"
+    ]
 }

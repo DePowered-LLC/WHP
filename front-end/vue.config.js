@@ -2,8 +2,12 @@ const fs = require('fs');
 const mainConfig = require('../config');
 
 let configuration = {
-	configureWebpack: function () {
+	configureWebpack (webpack) {
 		process.env.VUE_APP_TITLE = mainConfig.title;
+		webpack.module.rules.push({
+			test: /\.raw\./,
+			use: 'raw-loader'
+		});
 	},
 	devServer: {
 		disableHostCheck: true,

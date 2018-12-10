@@ -16,11 +16,14 @@
 import E403 from '@/views/E403.vue'
 import IconSprite from '@/assets/icons/IconSprite.vue'
 
-import '@/styles/buttons.css'
-import '@/styles/formatting.css'
-import '@/styles/icons.css'
-import '@/styles/loader.css'
-import '@/styles/tables.css'
+// import '@/styles/buttons.css'
+// import '@/styles/formatting.css'
+// import '@/styles/icons.css'
+// import '@/styles/loader.css'
+// import '@/styles/tables.css'
+// import test from '@/assets/test.png'
+
+// console.log(test);
 export default {
 	components: { E403, IconSprite },
 	created () { this.$store.commit('checkSession'); }
